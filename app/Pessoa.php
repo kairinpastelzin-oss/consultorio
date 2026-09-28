@@ -1,4 +1,5 @@
 <?php
+namespace App;
     abstract class Pessoa{
         public $id;
         public $nome;
@@ -7,5 +8,12 @@
         public $email;
         public $dataNascimento;
         public $endereco;
+
+        public function cadastrar(){
+
+        }
+        public static function listar(){
+
+        }
     }
 ?>
