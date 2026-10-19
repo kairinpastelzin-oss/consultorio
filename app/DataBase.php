@@ -5,7 +5,7 @@ use PDOException;
 class DataBase{
     const HOST = 'localhost';
     const USER = 'root';
-    const PASSWORD = '123';
+    const PASSWORD = '123'; 
     const DBNAME = 'consultorio';
     private $connection;
     private $table;
@@ -28,15 +28,21 @@ class DataBase{
             $statement->execute($values);
             return $statement;
         }catch(PDOException $e){
-            die("Eror:".$e->getMessage());
-        }
+            die('ERROR: '.$e->getMessage());
+        }   
     }
     public function insert($array){
         $fields = array_keys($array);
         $binds = array_pad([],count($array),'?');
-        $query = 'insert into'.$this->table.'('.implode('(,',$fields).')values('.implode(',',$binds).')';
+        $query = 'insert into '.$this->table.'('.implode(', ',$fields).')
+         values('.implode(', ',$binds).')';
         $this->execute($query, array_values($array));
-        return $this->connection->lastinsertid();
+        return $this->connection->lastInsertId();
+        
+    }
+    public function select(){
+        $query = 'select * FROM '.$this->table;
+        return $this->execute($query);
     }
 
 }

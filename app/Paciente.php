@@ -1,14 +1,15 @@
-<?php
+<?php   
 namespace App;
+use PDO;
 class Paciente extends Pessoa{
     public $convenio;
     public $observacao;
     public function cadastrar(){
         $db = new DataBase('paciente');
-        $db->insert([
+        $this->id = $db->insert([
             'nome' => $this->nome,
             'cpf'  => $this->cpf,
-            'data_nascimento' =>$this->dataNascimento,
+            'data_nascimento' =>$this->data_nascimento,
             'telefone' => $this->telefone,
             'email' => $this->email,
             'endereco' => $this->endereco,
@@ -25,7 +26,6 @@ class Paciente extends Pessoa{
 
     }
     public static function listar(){
-        
-        return null;
+        return (new DataBase('paciente'))->select()->fetchALL(PDO::FETCH_CLASS, self::class);
     }
 }

@@ -1,21 +1,22 @@
 <?php
 namespace App;
-    class Funcionario extends Pessoa{
-        public $cro;
-        public $especialidade;
-        public $senha;
-        public $perfil;
-        
-public function cadastrar(){
+class Funcionario extends Pessoa{
+    public $cro;
+    public $especiacidade;
+    public $senha;
+    public $perfil;
 
-}
-public function alterar(){
+    public function cadastrar(){
 
-}
-public static function excluir(){
-
-}
-public static function listar(){
-
-}
     }
+    public function alerar(){
+
+    }
+    public static function excluir(){
+
+    }
+    public static function listar(){
+
+    }
+
+}
