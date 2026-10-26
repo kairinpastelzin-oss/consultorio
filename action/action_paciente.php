@@ -17,10 +17,11 @@ switch($action){
         header('location: /consultorio/view/paciente/listar.php');
     break;
     case 'alterar':
-        
-    break;
-    case 'excluir':
 
+        break;
+    case 'excluir':
+        $paciente->id = $_GET('id');
+        $paciente->excluir();
     break;
 }
 ?>
