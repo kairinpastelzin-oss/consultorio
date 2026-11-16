@@ -1,5 +1,6 @@
 <?php
 use App\Consulta;
+ob_start(); 
 include('../vendor/autoload.php');
 $action = $_GET['action'];
 $consulta = new Consulta();

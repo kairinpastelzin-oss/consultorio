@@ -1,6 +1,9 @@
 <?php
+
 namespace App;
+
 use PDO;
+
 class Paciente extends Pessoa
 {
     public $convenio;

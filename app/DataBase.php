@@ -2,7 +2,6 @@
 namespace App;
 use PDO;
 use PDOException;
-
 class DataBase
 {
     const HOST = 'localhost';
@@ -15,15 +14,18 @@ class DataBase
 
     public function __construct($table = null)
     {
-        $this->setConnection();
         $this->table = $table;
+        $this->setConnection();
     }
 
     private function setConnection()
     {
         try {
+
             $this->connection = new PDO(
-                'mysql:host=' . self::HOST . ';dbname=' . self::DBNAME . ';charset=utf8',
+                'mysql:host=' . self::HOST .
+                ';dbname=' . self::DBNAME .
+                ';charset=utf8mb4',
                 self::USER,
                 self::PASSWORD
             );
@@ -34,20 +36,25 @@ class DataBase
             );
 
         } catch (PDOException $e) {
-            die('Erro na conexão: ' . $e->getMessage());
+
+            die('Erro na conexão com o banco: ' . $e->getMessage());
+
         }
     }
 
-    public function execute($query, $values = null)
+    public function execute($query, $values = [])
     {
         try {
+
             $statement = $this->connection->prepare($query);
             $statement->execute($values);
 
             return $statement;
 
         } catch (PDOException $e) {
+
             die('Erro na consulta: ' . $e->getMessage());
+
         }
     }
 
@@ -76,6 +83,7 @@ class DataBase
         $limit = null,
         $fields = '*'
     ) {
+
         $where = !empty($where) ? ' WHERE ' . $where : '';
         $order = !empty($order) ? ' ORDER BY ' . $order : '';
         $limit = !empty($limit) ? ' LIMIT ' . $limit : '';

@@ -1,20 +1,15 @@
 <?php
-
 namespace App;
-
 use PDO;
-
 class Funcionario extends Pessoa
 {
     public $cro;
     public $especialidade;
     public $senha;
     public $perfil;
-
     public function cadastrar()
     {
         $db = new DataBase('funcionario');
-
         $this->id = $db->insert([
             'nome' => $this->nome,
             'cpf' => $this->cpf,
@@ -30,7 +25,6 @@ class Funcionario extends Pessoa
 
         return $this->id;
     }
-
     public function alterar()
     {
         return (new DataBase('funcionario'))->update(
@@ -49,14 +43,12 @@ class Funcionario extends Pessoa
             ]
         );
     }
-
     public function excluir()
     {
         return (new DataBase('funcionario'))->delete(
             'id = ' . (int) $this->id
         );
     }
-
     public static function listar(
         $where = null,
         $order = null,
@@ -67,7 +59,6 @@ class Funcionario extends Pessoa
             ->select($where, $order, $limit, $fields)
             ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
-
     public static function buscarPorId($id)
     {
         return (new DataBase('funcionario'))
