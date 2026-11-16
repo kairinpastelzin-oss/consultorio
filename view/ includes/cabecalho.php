@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 
+=======
+<?php
+include('../../vendor/autoload.php');
+?>
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,11 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="#">Menu</a>
+=======
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">MENU</a>
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,15 +24,24 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link" href="#">Funcionarios</a>
+=======
+          <a class="nav-link" href="/consultorio/view/funcionario/listar.php">Funcionarios</a>
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Pacientes
           </a>
           <ul class="dropdown-menu">
+<<<<<<< HEAD
             <li><a class="dropdown-item" href="">Cadastrar paciente</a></li>
             <li><a class="dropdown-item" href="#">Lista de pacientes</a></li>
+=======
+            <li><a class="dropdown-item" href="/consultorio/view/paciente/cadastrar.php">Cadastrar Paciente</a></li>
+            <li><a class="dropdown-item" href="/consultorio/view/paciente/listar.php">Lista de Pacientes</a></li>
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
@@ -41,6 +56,10 @@
       </form>
     </div>
   </div>
+<<<<<<< HEAD
 </nav>
 </body>
 </html>
+=======
+</nav>
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd

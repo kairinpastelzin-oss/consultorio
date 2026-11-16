@@ -1,5 +1,6 @@
 <?php
 namespace App;
+<<<<<<< HEAD
 use PDO;
 class Consulta{
     // Campos da tabela "consulta"
@@ -8,11 +9,19 @@ class Consulta{
     public $dentista_id;
     public $data_hora;
     public $valor_total;
+=======
+class Consulta{
+    public $id;
+    public $dentista_id; 	
+    public $data_hora;
+    public $valor_total; 	
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd
     public $valor_pago;
     public $forma_pagamento;
     public $procedimentos_realizados;
     public $procedimentos_arealizar;
     public $descricao;
+<<<<<<< HEAD
     public $medicacao;
     // Campos extras, preenchidos só na listagem (vêm do JOIN)
     public $paciente_nome;
@@ -62,3 +71,7 @@ class Consulta{
         return (new DataBase('consulta'))->select('id = '.(int)$id)->fetchObject(self::class);
     }
 }
+=======
+    public $medicacao; 	
+}
+>>>>>>> d7d7118ef4abeff5aa9b2ae3daef72b1dc3aa2dd

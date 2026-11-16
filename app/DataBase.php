@@ -6,6 +6,8 @@ class DataBase{
     const HOST = 'localhost';
     const USER = 'root';
     const PASSWORD = '123'; 
+=======
+    const PASSWORD = '123';
     const DBNAME = 'consultorio';
     private $connection;
     private $table;
@@ -30,6 +32,7 @@ class DataBase{
         }catch(PDOException $e){
             die('ERROR: '.$e->getMessage());
         }   
+        }
     }
     public function insert($array){
         $fields = array_keys($array);
@@ -55,6 +58,21 @@ class DataBase{
     }
     public function delete($where){
         $query = 'delete from ' . $this->table.' where ' .$where;
+        return $this->execute($query);
+    }
+        $where = strlen($where) ? ' where '.$where : '';
+        $order = strlen($order) ? ' order by '.$order : '';
+        $limit = strlen($limit) ? ' limit '.$limit : '';
+        $query = 'select '.$fields.' from '.$this->table . $where . $order .$limit;
+        return $this->execute($query);
+    }
+    public function update($where, $array){
+        $fields = array_keys($array);
+        $query = 'update '.$this->table.' set '.implode('= ?, ',$fields).'=? where '.$where;
+        return $this->execute($query,array_values($array));
+    }
+    public function delete($where){
+        $query = 'delete from '.$this->table.' where '.$where;
         return $this->execute($query);
     }
 }
