@@ -84,8 +84,6 @@ class Consulta
 
     public static function buscarPorId($id)
     {
-        return (new DataBase('consulta'))
-            ->select('id = ' . (int) $id)
-            ->fetchObject(self::class);
+        $consulta = (new DataBase('consulta'))->select('id = ' . (int) $id)->fetchObject(self::class);
     }
 }
