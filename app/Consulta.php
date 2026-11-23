@@ -4,8 +4,8 @@ use PDO;
 class Consulta
 {
     public $id;
-    public $paciente_id;
-    public $dentista_id;
+    public $paciente;
+    public $dentista;
     public $data_hora;
     public $valor_total;
     public $valor_pago;
@@ -14,9 +14,6 @@ class Consulta
     public $procedimentos_arealizar;
     public $descricao;
     public $medicacao;
-
-    public $paciente_nome;
-    public $dentista_nome;
 
     public function cadastrar()
     {
@@ -64,22 +61,14 @@ class Consulta
         );
     }
 
-    public static function listar(
-        $where = null,
-        $order = 'consulta.data_hora DESC',
-        $limit = null
-    ) {
-        $tabelas = 'consulta
-            INNER JOIN paciente ON consulta.paciente_id = paciente.id
-            INNER JOIN funcionario ON consulta.dentista_id = funcionario.id';
-
-        $campos = 'consulta.*,
-            paciente.nome AS paciente_nome,
-            funcionario.nome AS dentista_nome';
-
-        return (new DataBase($tabelas))
-            ->select($where, $order, $limit, $campos)
-            ->fetchAll(PDO::FETCH_CLASS, self::class);
+    public static function listar($where = null, $order = null, $limit = null)
+    {
+        $consultas = (new DataBase('consulta'))->select($where, $order, $limit)->fetchAll(PDO::FETCH_CLASS);
+        foreach ($consultas as $consulta) {
+            $consulta->paciente = Paciente::buscarPorId($consulta->paciente_id);
+            $consulta->dentista = Funcionario::buscarPorId($consulta->dentista_id);
+        }
+        return $consultas;
     }
 
     public static function buscarPorId($id)

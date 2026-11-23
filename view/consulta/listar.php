@@ -4,6 +4,9 @@ include('../includes/cabecalho.php');
 include('../includes/menu.php');
 include('../includes/rodape.php');
 $consultas = Consulta::listar();
+echo "<pre>";
+print_r($consultas);
+echo "</pre>";
 ?>
 <main class="container-fluid px-4">
     <h1 class="text-center">Lista de Consultas</h1>
@@ -31,8 +34,8 @@ $consultas = Consulta::listar();
         <tbody>
             <?php foreach ($consultas as $consulta) { ?>
                 <tr>
-                    <td><?= htmlspecialchars($consulta->paciente_nome) ?></td>
-                    <td><?= htmlspecialchars($consulta->dentista_nome) ?></td>
+                    <td><?= htmlspecialchars($consulta->paciente->nome) ?></td>
+                    <td><?= htmlspecialchars($consulta->dentista->nome) ?></td>
                     <td><?= date("d/m/Y H:i", strtotime($consulta->data_hora)) ?></td>
                     <td>R$ <?= number_format($consulta->valor_total, 2, ',', '.') ?></td>
                     <td>R$ <?= number_format($consulta->valor_pago, 2, ',', '.') ?></td>

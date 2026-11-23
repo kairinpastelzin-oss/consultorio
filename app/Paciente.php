@@ -57,15 +57,11 @@ class Paciente extends Pessoa
         $limit = null,
         $fields = '*'
     ) {
-        return (new DataBase('paciente'))
-            ->select($where, $order, $limit, $fields)
-            ->fetchAll(PDO::FETCH_CLASS, self::class);
+        return (new DataBase('paciente'))->select($where, $order, $limit, $fields) ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
     public static function buscarPorId($id)
     {
-        return (new DataBase('paciente'))
-            ->select('id = ' . (int) $id)
-            ->fetchObject(self::class);
+        return (new DataBase('paciente'))->select('id = ' . (int) $id)->fetchObject(self::class);
     }
 }
